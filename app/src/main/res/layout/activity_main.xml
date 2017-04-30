@@ -19,21 +19,22 @@
         android:layout_marginBottom="302dp"
         android:contentDescription="@string/app_name"/>
 
-    <Button
-        android:text="bSalir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bSalir"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/exit"
+        android:id="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp" />
 
-    <Button
-        android:text="Ayuda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bAyuda"
-        android:layout_alignParentBottom="true"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/help"
+        android:id="@+id/imageView2"
+        android:layout_alignTop="@+id/imageView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -41,9 +42,9 @@
         android:orientation="vertical"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_above="@+id/bSalir"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="57dp"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:text="Jugar"
@@ -62,10 +63,10 @@
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:text="Button"
+            android:text="Configuracion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:id="@+id/bConfig" />
 
     </LinearLayout>
 
