@@ -16,9 +16,57 @@
         app:srcCompat="@drawable/main_logo"
         android:id="@+id/imgv_principal"
         android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="302dp"
         android:contentDescription="@string/app_name"/>
+
+    <Button
+        android:text="bSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bSalir"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Ayuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bAyuda"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/bSalir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp">
+
+        <Button
+            android:text="Jugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/bJugar" />
+
+        <Button
+            android:text="Puntajes Altos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bPuntajes"
+            android:layout_below="@+id/bJugar"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button" />
+
+    </LinearLayout>
+
 </RelativeLayout>
