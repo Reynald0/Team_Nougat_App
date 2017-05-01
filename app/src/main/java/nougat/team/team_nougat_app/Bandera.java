@@ -5,13 +5,13 @@ package nougat.team.team_nougat_app;
  */
 
 public enum Bandera {
-    MEXICO ("México","RUTA_BANDERA", "América");
+    MEXICO ("México",R.drawable.mexico, "América");
 
     private final String nombre;
-    private final String ruta;
+    private final int ruta; //El tipo de dato para R.drawable.mexico es INT
     private final String continente;
 
-    Bandera(String nombre, String ruta, String continente) {
+    Bandera(String nombre, int ruta, String continente) {
         this.nombre = nombre;
         this.ruta = ruta;
         this.continente = continente;
@@ -21,7 +21,7 @@ public enum Bandera {
         return nombre;
     }
 
-    public String getRuta() {
+    public int getRuta() {
         return ruta;
     }
 
