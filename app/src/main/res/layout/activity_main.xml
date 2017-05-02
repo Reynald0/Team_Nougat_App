@@ -47,20 +47,22 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:text="Jugar"
+            android:id="@+id/bJugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/bJugar" />
+            android:layout_centerVertical="true"
+            android:onClick="jugar"
+            android:text="Jugar" />
 
         <Button
-            android:text="Puntajes Altos"
+            android:id="@+id/bPuntajes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bPuntajes"
             android:layout_below="@+id/bJugar"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="puntaje"
+            android:text="Puntajes Altos" />
 
         <Button
             android:text="Configuracion"
