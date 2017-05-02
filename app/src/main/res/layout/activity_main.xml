@@ -61,14 +61,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bJugar"
             android:layout_centerHorizontal="true"
-            android:onClick="puntaje"
-            android:text="Puntajes Altos" />
+            android:onClick="PuntajesAltos"
+            android:text="PuntajesAltos" />
 
         <Button
-            android:text="Configuracion"
+            android:id="@+id/bConfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bConfig" />
+            android:onClick="Configuracion"
+            android:text="Configuracion" />
 
     </LinearLayout>
 

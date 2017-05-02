@@ -22,14 +22,17 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void puntaje(View v) {
+    public void PuntajesAltos(View v) {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
         mp.start();
     }
 
-    public void jugar(View v) {
+    public void Jugar(View v) {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
         mp.start();
     }
-
+    public void Configuracion(View v) {
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
+        mp.start();
+    }
 }
