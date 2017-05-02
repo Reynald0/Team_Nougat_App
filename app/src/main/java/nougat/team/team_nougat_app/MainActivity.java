@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void PuntajesAltos(View v) {
+    public void Puntajesaltos(View v) {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
         mp.start();
     }

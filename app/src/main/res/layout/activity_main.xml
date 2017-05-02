@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:onClick="jugar"
+            android:onClick="Jugar"
             android:text="Jugar" />
 
         <Button
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bJugar"
             android:layout_centerHorizontal="true"
-            android:onClick="PuntajesAltos"
+            android:onClick="Puntajesaltos"
             android:text="PuntajesAltos" />
 
         <Button
