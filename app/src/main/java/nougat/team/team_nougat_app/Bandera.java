@@ -4,7 +4,8 @@ package nougat.team.team_nougat_app;
  * Created by Reynald0 on 01/05/2017.
  */
 
-public enum Bandera {
+public enum Bandera
+{
     MEXICO ("México",R.drawable.mexico, "América");
 
     private final String nombre;
@@ -17,11 +18,13 @@ public enum Bandera {
         this.continente = continente;
     }
 
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public int getRuta() {
+    public int getRuta()
+    {
         return ruta;
     }
 

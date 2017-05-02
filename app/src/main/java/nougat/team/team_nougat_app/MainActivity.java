@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         MediaPlayer mediaPlayer;
         mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
         mediaPlayer.setLooping(true);
@@ -22,17 +21,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void Puntajesaltos(View v) {
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
+    public void puntaje(View v)
+    {
+        MediaPlayer mp = MediaPlayer.create(this,R.raw.bm);
         mp.start();
     }
 
-    public void Jugar(View v) {
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
+    public void play(View v)
+    {
+        MediaPlayer mp = MediaPlayer.create(this,R.raw.bm);
         mp.start();
     }
-    public void Configuracion(View v) {
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.bm);
+    public void conf(View v)
+    {
+        MediaPlayer mp = MediaPlayer.create(this,R.raw.bm);
         mp.start();
     }
 }
