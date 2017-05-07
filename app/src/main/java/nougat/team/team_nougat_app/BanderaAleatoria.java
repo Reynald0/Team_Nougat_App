@@ -3,7 +3,7 @@ package nougat.team.team_nougat_app;
 import java.util.Random;
 
 /**
- * Created by eliat on 06/05/2017.
+ * Created by Reynald0 on 06/05/2017.
  */
 
 public class BanderaAleatoria
