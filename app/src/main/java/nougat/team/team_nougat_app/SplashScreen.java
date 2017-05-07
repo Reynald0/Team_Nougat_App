@@ -10,8 +10,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class SplashScreen extends Activity {
-    public void onAttachedToWindow() {
+public class SplashScreen extends Activity
+{
+    public void onAttachedToWindow()
+    {
         super.onAttachedToWindow();
         Window window = getWindow();
         window.setFormat(PixelFormat.RGBA_8888);
