@@ -17,4 +17,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/bRefrescar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/iv_Bandera"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/iv_Bandera"
+        android:layout_marginBottom="19dp"
+        android:text="Refrescar"
+        android:textStyle="bold" />
+
 </RelativeLayout>
