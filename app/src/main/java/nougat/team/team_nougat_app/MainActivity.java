@@ -25,14 +25,6 @@ public class MainActivity extends AppCompatActivity
         musica_fondo.start();*/
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        musica_fondo.stop();
-        mp.stop();
-    }
-
     public void puntaje(View v)
     {
        /*mp = MediaPlayer.create(this,R.raw.victoria);
