@@ -23,6 +23,7 @@ public class Juego extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
+        bandera_azar = new BanderaAleatoria();
         vista_bandera = (ImageView) findViewById(R.id.iv_Bandera);
         refrescar=(Button)findViewById(R.id.bRefrescar) ;
         refrescar.setOnClickListener(new View.OnClickListener()
@@ -37,7 +38,6 @@ public class Juego extends AppCompatActivity
 
     private void generar ()
     {
-        bandera_azar = new BanderaAleatoria();
         bandera_azar.obtenerBanderaAleatoria();
         nombre_bandera = bandera_azar.getNombre();
         ruta_bandera = bandera_azar.getRuta();

@@ -20,7 +20,7 @@ public class BanderaAleatoria
 
     public void obtenerBanderaAleatoria() // Obtiene una posicion al azar del ENUM y la asigna a la variable global
     {
-        int posicion_bandera_elegida = rnd.nextInt(banderas.length + 1); //Se le suma 1 para que incluya el ultimo elemento
+        int posicion_bandera_elegida = rnd.nextInt(banderas.length);
         bandera_elegida = banderas[posicion_bandera_elegida];
     }
 
