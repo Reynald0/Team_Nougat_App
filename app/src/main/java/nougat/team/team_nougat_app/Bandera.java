@@ -9,7 +9,7 @@ package nougat.team.team_nougat_app;
 
 public enum Bandera
 {
-    ANTIGUA("Antigua y Barbuda", R.drawable.antigua_and_barbuda),
+    ANTIGUA("Antigua y Barbuda", R.drawable.antigua_barbuda),
     ARGENTINA("Argentina", R.drawable.argentina),
     BAHAMAS("Bahamas", R.drawable.bahamas),
     BARBADOS("Barbados", R.drawable.barbados),
