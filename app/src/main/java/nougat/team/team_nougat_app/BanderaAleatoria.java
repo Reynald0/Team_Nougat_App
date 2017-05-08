@@ -13,15 +13,18 @@ public class BanderaAleatoria
     private List<Bandera> banderas;
     private Random rnd;
     private Bandera bandera_elegida;
+    List<String> lista_nombre_banderas;
     private boolean banderas_disponibles = true;
 
     public BanderaAleatoria()
     {
         rnd = new Random();
         banderas = new ArrayList<Bandera>();
+        lista_nombre_banderas = new ArrayList<String>();
         for (Bandera banderita : Bandera.values())
         {
             banderas.add(banderita);
+            lista_nombre_banderas.add(banderita.getNombre());
         }
     }
 
@@ -37,6 +40,39 @@ public class BanderaAleatoria
         int posicion_elegida = rnd.nextInt(banderas.size()); // Obtiene una posicion al azar de la lista
         bandera_elegida = banderas.get(posicion_elegida);    // la asigna a la variable global
         banderas.remove(posicion_elegida); //Como ya se eleigio esa bandera se remueve de la LISTA
+    }
+
+    /**
+     * @param numero_opciones : Cantidad de  opciones a elegir de manera aleatoria.
+     */
+    public List<String> getOpciones(int numero_opciones)
+    {
+        int semaforo = numero_opciones;
+        if (numero_opciones > lista_nombre_banderas.size())
+            semaforo = lista_nombre_banderas.size();
+
+        String nombre_elegido = "";
+        int posicion_elegida = 0;
+        int contador = 0;
+        List<String> opciones = new ArrayList<String>();
+
+
+        while(contador < semaforo && opciones.size() < semaforo)
+        {
+            posicion_elegida = rnd.nextInt(lista_nombre_banderas.size());
+            nombre_elegido = lista_nombre_banderas.get(posicion_elegida);
+
+            if(opciones.contains(nombre_elegido))
+            {
+                System.out.println("SE REPITE");
+                continue;
+            }
+
+
+            opciones.add(nombre_elegido);
+            contador++;
+        }
+        return opciones;
     }
 
     public String getNombre()
