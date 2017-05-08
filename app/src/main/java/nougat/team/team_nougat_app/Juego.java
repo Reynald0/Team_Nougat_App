@@ -38,11 +38,14 @@ public class Juego extends AppCompatActivity
 
     private void generar ()
     {
-        bandera_azar.obtenerBanderaAleatoria();
-        nombre_bandera = bandera_azar.getNombre();
-        ruta_bandera = bandera_azar.getRuta();
-        //Toast.makeText(this, nombre_bandera + " - " + ruta_bandera, Toast.LENGTH_SHORT).show();
-        vista_bandera.setImageResource(ruta_bandera);
+        if(bandera_azar.hayBanderas())
+        {
+            bandera_azar.obtenerBanderaAleatoria();
+            nombre_bandera = bandera_azar.getNombre();
+            ruta_bandera = bandera_azar.getRuta();
+            //Toast.makeText(this, nombre_bandera + " - " + ruta_bandera, Toast.LENGTH_SHORT).show();
+            vista_bandera.setImageResource(ruta_bandera);
+        }
     }
 
 }

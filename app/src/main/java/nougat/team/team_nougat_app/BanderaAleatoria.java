@@ -13,6 +13,7 @@ public class BanderaAleatoria
     private List<Bandera> banderas;
     private Random rnd;
     private Bandera bandera_elegida;
+    private boolean banderas_disponibles = true;
 
     public BanderaAleatoria()
     {
@@ -27,7 +28,11 @@ public class BanderaAleatoria
     public void obtenerBanderaAleatoria()
     {
         if (banderas.isEmpty())
+        {
+            banderas_disponibles = false;
             return; //No hay nada se acaba
+        }
+
 
         int posicion_elegida = rnd.nextInt(banderas.size()); // Obtiene una posicion al azar de la lista
         bandera_elegida = banderas.get(posicion_elegida);    // la asigna a la variable global
@@ -47,5 +52,10 @@ public class BanderaAleatoria
     public Bandera getBandera()
     {
         return bandera_elegida;
+    }
+
+    public boolean hayBanderas()
+    {
+        return banderas_disponibles;
     }
 }
