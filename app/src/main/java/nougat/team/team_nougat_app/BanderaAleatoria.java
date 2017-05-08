@@ -13,7 +13,7 @@ public class BanderaAleatoria
     private List<Bandera> banderas;
     private Random rnd;
     private Bandera bandera_elegida;
-    List<String> lista_nombre_banderas;
+    private List<String> lista_nombre_banderas;
     private boolean banderas_disponibles = true;
 
     public BanderaAleatoria()
