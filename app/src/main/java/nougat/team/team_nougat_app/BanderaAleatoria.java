@@ -1,5 +1,7 @@
 package nougat.team.team_nougat_app;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,20 +10,28 @@ import java.util.Random;
 
 public class BanderaAleatoria
 {
-    Bandera[] banderas;
-    Random rnd;
-    Bandera bandera_elegida;
+    private List<Bandera> banderas;
+    private Random rnd;
+    private Bandera bandera_elegida;
 
     public BanderaAleatoria()
     {
         rnd = new Random();
-        banderas = Bandera.values();
+        banderas = new ArrayList<Bandera>();
+        for (Bandera banderita : Bandera.values())
+        {
+            banderas.add(banderita);
+        }
     }
 
-    public void obtenerBanderaAleatoria() // Obtiene una posicion al azar del ENUM y la asigna a la variable global
+    public void obtenerBanderaAleatoria()
     {
-        int posicion_bandera_elegida = rnd.nextInt(banderas.length);
-        bandera_elegida = banderas[posicion_bandera_elegida];
+        if (banderas.isEmpty())
+            return; //No hay nada se acaba
+
+        int posicion_elegida = rnd.nextInt(banderas.size()); // Obtiene una posicion al azar de la lista
+        bandera_elegida = banderas.get(posicion_elegida);    // la asigna a la variable global
+        banderas.remove(posicion_elegida); //Como ya se eleigio esa bandera se remueve de la LISTA
     }
 
     public String getNombre()
@@ -32,5 +42,10 @@ public class BanderaAleatoria
     public int getRuta()
     {
         return bandera_elegida.getRuta();
+    }
+
+    public Bandera getBandera()
+    {
+        return bandera_elegida;
     }
 }
