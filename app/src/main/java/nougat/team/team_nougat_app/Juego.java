@@ -5,47 +5,72 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.util.Random;
+import java.util.List;
 
-public class Juego extends AppCompatActivity
+public class Juego extends AppCompatActivity implements View.OnClickListener
 {
     private ImageView vista_bandera;
     private BanderaAleatoria bandera_azar;
     private String nombre_bandera ="";
-    int ruta_bandera =0;
-    Button refrescar;
-
+    private int ruta_bandera =0;
+    private List<String> opciones;
+    private Button opcion_1;
+    private Button opcion_2;
+    private Button opcion_3;
+    private Button opcion_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
+        opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
+        opcion_1.setOnClickListener(this);
+        opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
+        opcion_2.setOnClickListener(this);
+        opcion_3 = (Button) findViewById(R.id.btn_opcion_3);
+        opcion_3.setOnClickListener(this);
+        opcion_4 = (Button) findViewById(R.id.btn_opcion_4);
+        opcion_4.setOnClickListener(this);
         bandera_azar = new BanderaAleatoria();
         vista_bandera = (ImageView) findViewById(R.id.iv_Bandera);
-        refrescar=(Button)findViewById(R.id.bRefrescar) ;
-        refrescar.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                generar();
-            }
-        });
-        generar();
+        crearNuevaRonda();
     }
 
-    private void generar ()
+    private void crearNuevaRonda()
     {
         if(bandera_azar.hayBanderas())
         {
             bandera_azar.obtenerBanderaAleatoria();
+           // System.out.println("BANDERA ESCOGIDA AZAR " + bandera_azar.getNombre());
+            opciones = bandera_azar.getOpciones(4);
+           // System.out.println("OPCIONES ELEGIDAS " + opciones.toString());
+            opcion_1.setText(opciones.get(0));
+           // System.out.println("OPCION 1 : "+  opciones.get(0));
+            opcion_2.setText(opciones.get(1));
+           // System.out.println("OPCION 2 : "+  opciones.get(1));
+            opcion_3.setText(opciones.get(2));
+           // System.out.println("OPCION 3 : "+  opciones.get(2));
+            opcion_4.setText(opciones.get(3));
+           // System.out.println("OPCION 4 : "+  opciones.get(3));
             nombre_bandera = bandera_azar.getNombre();
             ruta_bandera = bandera_azar.getRuta();
-            //Toast.makeText(this, nombre_bandera + " - " + ruta_bandera, Toast.LENGTH_SHORT).show();
             vista_bandera.setImageResource(ruta_bandera);
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        //System.out.println("CLIC BANDERA NOMBRE ES : "+ nombre_bandera);
+        if (v instanceof  Button)
+        {
+            Button boton_presionado = (Button)v;
+          // System.out.println("CLIC EN BOTON CON TEXTO :"+boton_presionado.getText().toString()  +" ---- " + nombre_bandera);
+            if(boton_presionado.getText().toString().equalsIgnoreCase(nombre_bandera))
+            {
+                crearNuevaRonda();
+            }
+        }
+    }
 }

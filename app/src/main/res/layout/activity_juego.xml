@@ -10,22 +10,48 @@
         android:id="@+id/iv_Bandera"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:visibility="visible"
         app:srcCompat="@android:color/background_light"
         tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="16dp" />
 
-    <Button
-        android:id="@+id/bRefrescar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/iv_Bandera"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/iv_Bandera"
-        android:layout_marginBottom="19dp"
-        android:text="Refrescar"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/iv_Bandera"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_opcion_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/btn_opcion_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/btn_opcion_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/btn_opcion_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+    </LinearLayout>
 
 </RelativeLayout>
