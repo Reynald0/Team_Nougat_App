@@ -53,26 +53,43 @@ public class BanderaAleatoria
 
         String nombre_elegido = "";
         int posicion_elegida = 0;
-        int contador = 0;
+        int contador = 1;
         List<String> opciones = new ArrayList<String>();
+        try
+        {
+            opciones.add(bandera_elegida.getNombre());
+        }
+        catch (Exception e)
+        {
+            System.out.println("Debes generar una bandera primero antes de pedir los valores");
+            opciones.add("Revisa la clase");
+            return opciones;
+        }
 
 
-        while(contador < semaforo && opciones.size() < semaforo)
+        while(contador < semaforo && opciones.size() < lista_nombre_banderas.size()) //Rellena las opciones
         {
             posicion_elegida = rnd.nextInt(lista_nombre_banderas.size());
             nombre_elegido = lista_nombre_banderas.get(posicion_elegida);
 
             if(opciones.contains(nombre_elegido))
-            {
-                System.out.println("SE REPITE");
                 continue;
-            }
 
 
             opciones.add(nombre_elegido);
             contador++;
         }
-        return opciones;
+
+        List<String> opciones_azar = new ArrayList<String>();
+
+        while(!opciones.isEmpty()) // Agarra al azar y los deja en una nueva lista (opciones_azar)
+        {
+            int posicion = rnd.nextInt(opciones.size());
+            opciones_azar.add(opciones.get(posicion));
+            opciones.remove(posicion);
+        }
+
+        return opciones_azar;
     }
 
     public String getNombre()
