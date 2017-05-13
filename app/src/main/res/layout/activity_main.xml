@@ -68,7 +68,7 @@
             android:id="@+id/bConfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="conf"
+            android:onClick="configuraciones"
             android:text="Configuracion" />
 
     </LinearLayout>

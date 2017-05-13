@@ -54,4 +54,10 @@ public class MainActivity extends AppCompatActivity
         int ruta_bandera = bandera_azar.getRuta();
         Toast.makeText(this, nombre_bandera + " - " +  ruta_bandera, Toast.LENGTH_LONG).show();
     }
+
+    public void configuraciones(View V)
+    {
+        Intent intent =new Intent(this,Configuraciones.class);
+        startActivity(intent);
+    }
 }
