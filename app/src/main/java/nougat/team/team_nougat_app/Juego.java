@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -23,7 +24,9 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private Button opcion_4;
     private Button boton_presionado;
     private int VIDAS=3;
+    private int PUNTAJE=0;//Puntaje del juego
     private ImageView vida1,vida2,vida3;
+    private TextView puntaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,11 +46,14 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         vida1=(ImageView)findViewById(R.id.vida1);
         vida2=(ImageView)findViewById(R.id.vida2);
         vida3=(ImageView)findViewById(R.id.vida3);
+        puntaje=(TextView)findViewById(R.id.lblPuntaje);
+        puntaje.setText("Puntaje: 0");//Iniciamos el puntaje en 0
         crearNuevaRonda();
     }
 
     private void crearNuevaRonda()
     {
+        //Si hay banderas disponibles
         if(bandera_azar.hayBanderas())
         {
             bandera_azar.obtenerBanderaAleatoria();
@@ -66,6 +72,11 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             ruta_bandera = bandera_azar.getRuta();
             vista_bandera.setImageResource(ruta_bandera);
         }
+        else //Si no hay banderas, es que llegaste al final del juego sin morir
+        {
+            Toast.makeText(this,"GANASTE,SOS LOCO!",Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
     }
 
     @Override
@@ -79,11 +90,16 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             //Si la opcion es la corecta
             if(boton_presionado.getText().toString().equalsIgnoreCase(nombre_bandera))
             {
+                PUNTAJE=PUNTAJE+10;//Aunmenta el puntaje en 10 si aciertas
+                puntaje.setText("Puntaje: "+PUNTAJE);
                 crearNuevaRonda();
             }
             //Si nos equivocamos de pais
             else if(boton_presionado.getText().toString()!=nombre_bandera)
-            {   //Empieza el control de las vidas, un corazon gris por cada vida perdida
+            {
+                PUNTAJE=PUNTAJE-10;//Si fallas pierdes una vida y 10 puntos ;)
+                puntaje.setText("Puntaje: "+PUNTAJE);
+                //Empieza el control de las vidas, un corazon gris por cada vida perdida
                 if(VIDAS==0)
                 {///Cuando llega a 0 el numero de vidas, se termina el juego
                     Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
