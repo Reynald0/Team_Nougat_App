@@ -1,10 +1,12 @@
 package nougat.team.team_nougat_app;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,6 +21,9 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private Button opcion_2;
     private Button opcion_3;
     private Button opcion_4;
+    private Button boton_presionado;
+    private int VIDAS=3;
+    private ImageView vida1,vida2,vida3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,6 +40,9 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         opcion_4.setOnClickListener(this);
         bandera_azar = new BanderaAleatoria();
         vista_bandera = (ImageView) findViewById(R.id.iv_Bandera);
+        vida1=(ImageView)findViewById(R.id.vida1);
+        vida2=(ImageView)findViewById(R.id.vida2);
+        vida3=(ImageView)findViewById(R.id.vida3);
         crearNuevaRonda();
     }
 
@@ -61,15 +69,44 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         //System.out.println("CLIC BANDERA NOMBRE ES : "+ nombre_bandera);
         if (v instanceof  Button)
         {
-            Button boton_presionado = (Button)v;
+            boton_presionado = (Button)v;
           // System.out.println("CLIC EN BOTON CON TEXTO :"+boton_presionado.getText().toString()  +" ---- " + nombre_bandera);
+            //Si la opcion es la corecta
             if(boton_presionado.getText().toString().equalsIgnoreCase(nombre_bandera))
             {
                 crearNuevaRonda();
+            }
+            //Si nos equivocamos de pais
+            else if(boton_presionado.getText().toString()!=nombre_bandera)
+            {   //Empieza el control de las vidas, un corazon gris por cada vida perdida
+                if(VIDAS==0)
+                {///Cuando llega a 0 el numero de vidas, se termina el juego
+                    Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
+                    this.finish();
+                }
+                else if (VIDAS==3)
+                {
+                    VIDAS--;
+                    vida1.setImageResource(R.drawable.muerte);
+                    crearNuevaRonda();
+                }
+                else if (VIDAS==2)
+                {
+                    VIDAS--;
+                    vida2.setImageResource(R.drawable.muerte);
+                    crearNuevaRonda();
+                }
+                else if (VIDAS==1)
+                {
+                    VIDAS--;
+                    vida3.setImageResource(R.drawable.muerte);
+                    crearNuevaRonda();
+                }
             }
         }
     }
