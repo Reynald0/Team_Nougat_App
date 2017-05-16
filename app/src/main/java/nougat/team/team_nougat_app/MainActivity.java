@@ -44,17 +44,6 @@ public class MainActivity extends AppCompatActivity
         mp.start();*/
     }
 
-    public void elegirBanderaAlAzar(View v)
-    {
-        // Este metodo imprime en pantalla el NOMBRE y RUTA (R.drawable.XXXXX) de la bandera
-        // OJO las variables estan arriba de manera global y se inicializa en el ONCREATE del activity
-
-        bandera_azar.obtenerBanderaAleatoria();
-        String nombre_bandera = bandera_azar.getNombre();
-        int ruta_bandera = bandera_azar.getRuta();
-        Toast.makeText(this, nombre_bandera + " - " +  ruta_bandera, Toast.LENGTH_LONG).show();
-    }
-
     public void configuraciones(View V)
     {
         Intent intent =new Intent(this,Configuraciones.class);
