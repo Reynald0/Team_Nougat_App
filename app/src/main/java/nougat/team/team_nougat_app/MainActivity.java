@@ -14,15 +14,16 @@ public class MainActivity extends AppCompatActivity
     private MediaPlayer mp;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bandera_azar = new BanderaAleatoria();
-        /*musica_fondo = MediaPlayer.create(this,R.raw.fondo3);
-        musica_fondo.setLooping(true);
-        musica_fondo.setVolume(100,100);
-        musica_fondo.start();*/
+
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(100,100);
+        mediaPlayer.start();
+
     }
 
     public void puntaje(View v)
