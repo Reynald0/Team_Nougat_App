@@ -1,6 +1,7 @@
 package nougat.team.team_nougat_app;
 
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,11 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(this,R.raw.midnightidea);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(100,100);
+        mediaPlayer.start();
         opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
         opcion_1.setOnClickListener(this);
         opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
@@ -93,17 +99,24 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 PUNTAJE=PUNTAJE+10;//Aunmenta el puntaje en 10 si aciertas
                 puntaje.setText("Puntaje: "+PUNTAJE);
                 crearNuevaRonda();
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.correcto);
+                mp.start();
             }
             //Si nos equivocamos de pais
             else if(boton_presionado.getText().toString()!=nombre_bandera)
             {
                 PUNTAJE=PUNTAJE-10;//Si fallas pierdes una vida y 10 puntos ;)
                 puntaje.setText("Puntaje: "+PUNTAJE);
+                MediaPlayer rp = MediaPlayer.create(this, R.raw.buttondiez);
+                rp.start();
+
                 //Empieza el control de las vidas, un corazon gris por cada vida perdida
                 if(VIDAS==0)
                 {///Cuando llega a 0 el numero de vidas, se termina el juego
+
                     Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
                     this.finish();
+
                 }
                 else if (VIDAS==3)
                 {
@@ -122,8 +135,10 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                     VIDAS--;
                     vida3.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
+
                 }
             }
         }
     }
+
 }

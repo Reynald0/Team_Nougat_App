@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity
     {
        /*mp = MediaPlayer.create(this,R.raw.victoria);
         mp.start();*/
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
+        mp.start();
     }
 
     public void play(View v)
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity
         mp.start();*/
         Intent i = new Intent(this, Juego.class);
         startActivity(i);
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
+        mp.start();
     }
     public void conf(View v)
     {
@@ -49,5 +53,9 @@ public class MainActivity extends AppCompatActivity
     {
         Intent intent =new Intent(this,Configuraciones.class);
         startActivity(intent);
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
+        mp.start();
     }
+
+
 }
