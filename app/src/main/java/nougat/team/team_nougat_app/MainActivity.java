@@ -11,14 +11,14 @@ public class MainActivity extends AppCompatActivity
 {
     private BanderaAleatoria bandera_azar;
     private MediaPlayer musica_fondo;
-    private MediaPlayer mp;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MediaPlayer mediaPlayer;
+
         mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(100,100);
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity
     {
         /*mp = MediaPlayer.create(this,R.raw.bm);
         mp.start();*/
+
+        mediaPlayer.stop();
         Intent i = new Intent(this, Juego.class);
         startActivity(i);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
