@@ -48,10 +48,9 @@ public class MainActivity extends AppCompatActivity
         MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
         mp.start();
     }
-    public void conf(View v)
+    public void salir(View v)
     {
-       /* mp = MediaPlayer.create(this,R.raw.bm);
-        mp.start();*/
+        this.finish();
     }
 
     public void configuraciones(View V)
@@ -69,5 +68,15 @@ public class MainActivity extends AppCompatActivity
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(100,100);
         mediaPlayer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer != null)
+        {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
     }
 }
