@@ -28,13 +28,13 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private int PUNTAJE=0;//Puntaje del juego
     private ImageView vida1,vida2,vida3;
     private TextView puntaje;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
-        MediaPlayer mediaPlayer;
         mediaPlayer = MediaPlayer.create(this,R.raw.midnightidea);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(100,100);
@@ -141,4 +141,15 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
+            if (isFinishing()) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        }
+    }
 }
