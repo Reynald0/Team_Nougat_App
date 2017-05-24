@@ -53,15 +53,7 @@ public class MainActivity extends AppCompatActivity
         this.finish();
     }
 
-    public void configuraciones(View V)
-    {
-        Intent intent =new Intent(this,Configuraciones.class);
-        startActivity(intent);
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
-        mp.start();
-    }
-
-    @Override
+      @Override
     protected void onRestart() {
         super.onRestart();
         mediaPlayer = MediaPlayer.create(this,R.raw.fondo);

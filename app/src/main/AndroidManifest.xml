@@ -23,12 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Juego" />
-        <activity
-            android:name=".configuracion_juego"
-            android:label="@string/title_activity_configuracion_juego" />
-        <activity
-            android:name=".Configuraciones"
-            android:label="@string/title_activity_configuraciones"></activity>
     </application>
 
 </manifest>
