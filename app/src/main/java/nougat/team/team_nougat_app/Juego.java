@@ -1,10 +1,11 @@
 package nougat.team.team_nougat_app;
 
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,17 +29,17 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private int PUNTAJE=0;//Puntaje del juego
     private ImageView vida1,vida2,vida3;
     private TextView puntaje;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer sonido_fondo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
-        mediaPlayer = MediaPlayer.create(this,R.raw.midnightidea);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.start();
+        sonido_fondo = MediaPlayer.create(this,R.raw.midnightidea);
+        sonido_fondo.setLooping(true);
+        sonido_fondo.setVolume(100,100);
+        sonido_fondo.start();
         opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
         opcion_1.setOnClickListener(this);
         opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
@@ -96,46 +97,48 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             //Si la opcion es la corecta
             if(boton_presionado.getText().toString().equalsIgnoreCase(nombre_bandera))
             {
-                PUNTAJE=PUNTAJE+10;//Aunmenta el puntaje en 10 si aciertas
-                puntaje.setText("Puntaje: "+PUNTAJE);
+                PUNTAJE = PUNTAJE + 10;//Aunmenta el puntaje en 10 si aciertas
+                puntaje.setText("Puntaje: "+ PUNTAJE);
                 crearNuevaRonda();
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.correcto);
                 mp.start();
             }
             //Si nos equivocamos de pais
-            else if(boton_presionado.getText().toString()!=nombre_bandera)
+            else if(boton_presionado.getText().toString()!= nombre_bandera)
             {
-                PUNTAJE=PUNTAJE-10;//Si fallas pierdes una vida y 10 puntos ;)
-                puntaje.setText("Puntaje: "+PUNTAJE);
+                if(PUNTAJE > 1)
+                    PUNTAJE = PUNTAJE - 10;//Si fallas pierdes una vida y 10 puntos ;)
+
+                puntaje.setText("Puntaje: "+ PUNTAJE);
+                puntaje.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_in));
                 MediaPlayer rp = MediaPlayer.create(this, R.raw.buttondiez);
                 rp.start();
 
                 //Empieza el control de las vidas, un corazon gris por cada vida perdida
-                if(VIDAS==0)
+                if(VIDAS == 0)
                 {///Cuando llega a 0 el numero de vidas, se termina el juego
 
                     Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
                     this.finish();
 
                 }
-                else if (VIDAS==3)
+                else if (VIDAS == 3)
                 {
                     VIDAS--;
                     vida1.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
                 }
-                else if (VIDAS==2)
+                else if (VIDAS == 2)
                 {
                     VIDAS--;
                     vida2.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
                 }
-                else if (VIDAS==1)
+                else if (VIDAS == 1)
                 {
                     VIDAS--;
                     vida3.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
-
                 }
             }
         }
@@ -144,11 +147,11 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onPause() {
         super.onPause();
-        if (mediaPlayer != null) {
-            mediaPlayer.pause();
+        if (sonido_fondo != null) {
+            sonido_fondo.pause();
             if (isFinishing()) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
+                sonido_fondo.stop();
+                sonido_fondo.release();
             }
         }
     }

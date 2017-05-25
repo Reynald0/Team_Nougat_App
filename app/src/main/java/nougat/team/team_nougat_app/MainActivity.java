@@ -5,13 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.media.MediaPlayer;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    private BanderaAleatoria bandera_azar;
-    private MediaPlayer musica_fondo;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer sonido_fondo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,37 +16,37 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.start();
+        sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
+        sonido_fondo.setLooping(true);
+        sonido_fondo.setVolume(100,100);
+        sonido_fondo.start();
 
+    }
+
+    public void reproducirSonido(int sonido)
+    {
+        MediaPlayer mp = MediaPlayer.create(this, sonido);
+        mp.start();
     }
 
     public void puntaje(View v)
     {
-       /*mp = MediaPlayer.create(this,R.raw.victoria);
-        mp.start();*/
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
-        mp.start();
+        reproducirSonido(R.raw.buttoncerodos);
     }
 
     public void play(View v)
     {
-        /*mp = MediaPlayer.create(this,R.raw.bm);
-        mp.start();*/
-        if (mediaPlayer != null)
+        if (sonido_fondo != null)
         {
-            mediaPlayer.setLooping(false);
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            mediaPlayer = null;
+            sonido_fondo.setLooping(false);
+            sonido_fondo.stop();
+            sonido_fondo.reset();
+            sonido_fondo.release();
+            sonido_fondo = null;
         }
         Intent i = new Intent(this, Juego.class);
         startActivity(i);
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
-        mp.start();
+        reproducirSonido(R.raw.buttoncerodos);
     }
 
     public void salir(View v)
@@ -61,22 +58,22 @@ public class MainActivity extends AppCompatActivity
     protected void onRestart() {
         super.onRestart();
 
-        if(mediaPlayer != null)
+        if(sonido_fondo != null)
             return;
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.start();
+        sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
+        sonido_fondo.setLooping(true);
+        sonido_fondo.setVolume(100,100);
+        sonido_fondo.start();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mediaPlayer != null)
+        if(sonido_fondo != null)
         {
-            mediaPlayer.stop();
-            mediaPlayer.release();
+            sonido_fondo.stop();
+            sonido_fondo.release();
         }
     }
 }
