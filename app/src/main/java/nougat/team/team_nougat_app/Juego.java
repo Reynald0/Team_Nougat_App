@@ -121,7 +121,6 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
 
                     Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
                     this.finish();
-
                 }
                 else if (VIDAS == 3)
                 {
