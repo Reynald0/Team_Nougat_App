@@ -109,8 +109,9 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 if(PUNTAJE > 1)
                     PUNTAJE = PUNTAJE - 10;//Si fallas pierdes una vida y 10 puntos ;)
 
-                puntaje.setText("Puntaje: "+ PUNTAJE);
                 puntaje.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_in));
+                puntaje.setText("Puntaje: "+ PUNTAJE);
+
                 MediaPlayer rp = MediaPlayer.create(this, R.raw.buttondiez);
                 rp.start();
 
@@ -125,18 +126,21 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 else if (VIDAS == 3)
                 {
                     VIDAS--;
+                    vida1.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_out));
                     vida1.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
                 }
                 else if (VIDAS == 2)
                 {
                     VIDAS--;
+                    vida2.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_out));
                     vida2.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
                 }
                 else if (VIDAS == 1)
                 {
                     VIDAS--;
+                    vida3.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_out));
                     vida3.setImageResource(R.drawable.muerte);
                     crearNuevaRonda();
                 }
