@@ -67,6 +67,7 @@
             android:id="@+id/btn_opcion_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_opciones"
             android:text="OP 1"
             android:textSize="14dip" />
 
@@ -74,6 +75,7 @@
             android:id="@+id/btn_opcion_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_opciones"
             android:text="OP 2"
             android:textSize="14dip" />
 
@@ -81,6 +83,7 @@
             android:id="@+id/btn_opcion_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_opciones"
             android:text="OP 3"
             android:textSize="14dip" />
 
@@ -88,6 +91,7 @@
             android:id="@+id/btn_opcion_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_opciones"
             android:text="OP 4"
             android:textSize="14dip" />
 
