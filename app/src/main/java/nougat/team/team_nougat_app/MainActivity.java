@@ -40,22 +40,30 @@ public class MainActivity extends AppCompatActivity
         mp.start();*/
         if (mediaPlayer != null)
         {
+            mediaPlayer.setLooping(false);
             mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.release();
+            mediaPlayer = null;
         }
         Intent i = new Intent(this, Juego.class);
         startActivity(i);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.buttoncerodos);
         mp.start();
     }
+
     public void salir(View v)
     {
         this.finish();
     }
 
-      @Override
+    @Override
     protected void onRestart() {
         super.onRestart();
+
+        if(mediaPlayer != null)
+            return;
+
         mediaPlayer = MediaPlayer.create(this,R.raw.fondo);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(100,100);
