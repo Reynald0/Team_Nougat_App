@@ -29,7 +29,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private int PUNTAJE=0;//Puntaje del juego
     private ImageView vida1,vida2,vida3;
     private TextView puntaje;
-    private MediaPlayer sonido_fondo;
+    private MediaPlayer sonido_fondo,correcto, incorrecto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +40,8 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
         sonido_fondo.start();
+        incorrecto = MediaPlayer.create(this, R.raw.buttondiez);
+        correcto= MediaPlayer.create(this, R.raw.correcto);
         opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
         opcion_1.setOnClickListener(this);
         opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
@@ -99,9 +101,10 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             {
                 PUNTAJE = PUNTAJE + 10;//Aunmenta el puntaje en 10 si aciertas
                 puntaje.setText("Puntaje: "+ PUNTAJE);
+                correcto.start();
                 crearNuevaRonda();
-                MediaPlayer mp = MediaPlayer.create(this, R.raw.correcto);
-                mp.start();
+
+
             }
             //Si nos equivocamos de pais
             else if(boton_presionado.getText().toString()!= nombre_bandera)
@@ -111,9 +114,9 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
 
                 puntaje.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_in));
                 puntaje.setText("Puntaje: "+ PUNTAJE);
+                incorrecto.start();
 
-                MediaPlayer rp = MediaPlayer.create(this, R.raw.buttondiez);
-                rp.start();
+
 
                 //Empieza el control de las vidas, un corazon gris por cada vida perdida
                 if(VIDAS == 0)

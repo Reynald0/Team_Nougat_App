@@ -17,8 +17,11 @@
         app:srcCompat="@drawable/main_logo"
         android:id="@+id/imgv_principal"
         android:layout_height="200dp"
-        android:layout_marginBottom="302dp"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="35dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -48,7 +51,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="57dp"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout3">
 
         <ImageView
             android:id="@+id/btn_iniciar"
