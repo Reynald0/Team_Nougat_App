@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity
         reproducirSonido(R.raw.buttoncerodos);
     }
 
+    public void ver_informacion(View view)
+    {
+        Intent i = new Intent(this, Informacion.class);
+        startActivity(i);
+        reproducirSonido(R.raw.buttoncerodos);
+    }
+
     public void salir(View v)
     {
         this.finish();
