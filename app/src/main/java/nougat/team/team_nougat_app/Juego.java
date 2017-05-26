@@ -153,12 +153,20 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onPause() {
         super.onPause();
-        if (sonido_fondo != null) {
+        if (sonido_fondo != null){
             sonido_fondo.pause();
-            if (isFinishing()) {
+            if (isFinishing()){
                 sonido_fondo.stop();
                 sonido_fondo.release();
             }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sonido_fondo != null){
+            sonido_fondo.start();
         }
     }
 }
