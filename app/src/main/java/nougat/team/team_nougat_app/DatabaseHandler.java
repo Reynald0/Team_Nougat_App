@@ -114,7 +114,27 @@ public class DatabaseHandler extends SQLiteOpenHelper
 
         return db.update(TABLE_SCORE, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(jugador.getId()) });
+    }
 
+    public Boolean updateJugadorIfExist(String nickJugador, int nuevaPuntuacion)
+    {
+        String selectQuery = "SELECT * FROM " + TABLE_SCORE
+                +" WHERE " + KEY_NICK + "='" + nickJugador + "';";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst())
+        {
+            Jugador jugador = new Jugador();
+            jugador.setId(cursor.getInt(0));
+            jugador.setNick(cursor.getString(1));
+            jugador.setPuntuacion(nuevaPuntuacion);
+            updateJugador(jugador);
+            return true;
+        }
+        cursor.close();
+        db.close();
+        return false;
     }
 
     public void deleteJugador(Jugador jugador)
@@ -147,6 +167,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
             }
             while (cursor.moveToNext());
         }
+        db.close();
         return top_jugadores;
     }
 }

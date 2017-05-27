@@ -88,7 +88,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         else //Si no hay banderas, es que llegaste al final del juego sin morir
         {
             Toast.makeText(this,"GANASTE,SOS LOCO!",Toast.LENGTH_SHORT).show();
-            solicitar();
+            solicitarNick();
         }
     }
 
@@ -120,8 +120,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 if(vidas == 0)
                 {
                     // Cuando llega a 0 el numero de vidas, se termina el juego
-                    Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
-                    solicitar();
+                    solicitarNick();
                 }
                 else if (vidas == 3)
                 {
@@ -169,7 +168,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     }
 
     //Metodo experimental para solicitar el puntaje
-    public void solicitar()
+    public void solicitarNick()
     {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View promptView = layoutInflater.inflate(R.layout.puntaje_alto, null);
@@ -177,28 +176,19 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         alertDialogBuilder.setView(promptView);
         alertDialogBuilder.setTitle("Felicidades!!!");
         final EditText nick = (EditText)promptView.findViewById(R.id.txtNick);
-        // setup a dialog window
-        alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                try
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                String nick_jugador = nick.getText().toString();
+                if (db.updateJugadorIfExist(nick_jugador, puntaje))
                 {
-                    Log.d("Insertar: ", "INSERTANDO ..");
-                    db.addJugador(new Jugador(nick.getText().toString(), puntaje));
-                    Log.d("Insert: ", "JUGADOR INSERTADO ..");
-
-                    Log.d("Leyendo: ", "LEYENDO TODOS LOS JUGADORES ..");
-                    List<Jugador> jugadores = db.getTodosLosJugadores();
-
-                    for (Jugador jugador : jugadores)
-                    {
-                        String log = "ID: "+jugador.getId()+" ,NICK: " + jugador.getNick() + " ,PUNTUACION: " + jugador.getPuntuacion();
-                        Log.d("JUGADOR: ", log);
-                    }
-                } catch (Exception e)
-                {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
+                    Juego.this.finish();
+                    return;
                 }
+                db.addJugador(new Jugador(nick_jugador, puntaje));
+                Juego.this.finish();
             }
         });// create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
