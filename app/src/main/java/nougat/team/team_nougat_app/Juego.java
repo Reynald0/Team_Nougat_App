@@ -38,7 +38,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private MediaPlayer sonido_fondo;
     private MediaPlayer correcto;
     private MediaPlayer incorrecto;
-    private AdminSQLiteOpenHelper db;
+    private DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,7 +67,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         tv_puntaje = (TextView)findViewById(R.id.lblPuntaje);
         tv_puntaje.setText("Puntaje: 0");
         crearNuevaRonda();
-        db = new AdminSQLiteOpenHelper(getApplicationContext());
+        db = new DatabaseHandler(getApplicationContext());
     }
 
     private void crearNuevaRonda()

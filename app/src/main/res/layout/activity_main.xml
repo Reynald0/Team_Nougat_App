@@ -68,8 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bJugar"
             android:layout_centerHorizontal="true"
-            android:onClick="puntaje"
-            android:text="PuntajesAltos" />
+            android:onClick="verPuntajesAltos"
+            android:text="Top Puntaje" />
 
         <Button
             android:id="@+id/bConfig"

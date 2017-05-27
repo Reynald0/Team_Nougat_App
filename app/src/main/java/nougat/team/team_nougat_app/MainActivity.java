@@ -27,11 +27,6 @@ public class MainActivity extends AppCompatActivity
         mp.start();
     }
 
-    public void puntaje(View v)
-    {
-        reproducirSonido(R.raw.buttoncerodos);
-    }
-
     public void play(View v)
     {
         if (sonido_fondo != null)
@@ -43,6 +38,21 @@ public class MainActivity extends AppCompatActivity
             sonido_fondo = null;
         }
         Intent i = new Intent(this, Juego.class);
+        startActivity(i);
+        reproducirSonido(R.raw.buttoncerodos);
+    }
+
+    public void verPuntajesAltos(View view)
+    {
+        if (sonido_fondo != null)
+        {
+            sonido_fondo.setLooping(false);
+            sonido_fondo.stop();
+            sonido_fondo.reset();
+            sonido_fondo.release();
+            sonido_fondo = null;
+        }
+        Intent i = new Intent(this, Puntajes_Altos.class);
         startActivity(i);
         reproducirSonido(R.raw.buttoncerodos);
     }

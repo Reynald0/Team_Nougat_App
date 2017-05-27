@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Hug0Albert0 on 25/05/2017.
  */
 
-public class AdminSQLiteOpenHelper extends SQLiteOpenHelper
+public class DatabaseHandler extends SQLiteOpenHelper
 {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "juego_db";
@@ -23,7 +23,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper
     private static final String KEY_NICK = "nick";
     private static final String KEY_PUNTUACION = "puntuacion";
 
-    public AdminSQLiteOpenHelper(Context context)
+    public DatabaseHandler(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -123,5 +123,30 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper
         db.delete(TABLE_SCORE, KEY_ID + " = ?",
                 new String[] { String.valueOf(jugador.getId()) });
         db.close();
+    }
+
+    public List<Jugador> getTopJugadores(int cantidad)
+    {
+        List<Jugador> top_jugadores = new ArrayList<Jugador>();
+        String selectQuery = "SELECT * FROM " + TABLE_SCORE
+                           + " ORDER BY " + KEY_PUNTUACION
+                           + " DESC LIMIT " + cantidad + ";";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst())
+        {
+            do
+            {
+                Jugador jugador = new Jugador();
+                jugador.setId(cursor.getInt(0));
+                jugador.setNick(cursor.getString(1));
+                jugador.setPuntuacion(cursor.getInt(2));
+                top_jugadores.add(jugador);
+            }
+            while (cursor.moveToNext());
+        }
+        return top_jugadores;
     }
 }
