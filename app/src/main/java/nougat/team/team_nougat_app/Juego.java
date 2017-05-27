@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -37,6 +38,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private MediaPlayer sonido_fondo;
     private MediaPlayer correcto;
     private MediaPlayer incorrecto;
+    private AdminSQLiteOpenHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,6 +67,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         tv_puntaje = (TextView)findViewById(R.id.lblPuntaje);
         tv_puntaje.setText("Puntaje: 0");
         crearNuevaRonda();
+        db = new AdminSQLiteOpenHelper(getApplicationContext());
     }
 
     private void crearNuevaRonda()
@@ -173,14 +176,23 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptView);
         alertDialogBuilder.setTitle("Felicidades!!!");
-        final EditText game_targ = (EditText)promptView.findViewById(R.id.txtNick);
+        final EditText nick = (EditText)promptView.findViewById(R.id.txtNick);
         // setup a dialog window
         alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 try
                 {
-                    //Accion
-                    // Despues de hacer la consulta a la BD, implementar this.finish();
+                    Log.d("Insertar: ", "INSERTANDO ..");
+                    db.addJugador(new Jugador(nick.getText().toString(), puntaje));
+                    Log.d("Insert: ", "JUGADOR INSERTADO ..");
+
+                    // Log.d("Leyendo: ", "LEYENDO TODOS LOS JUGADORES ..");
+                    // List<Jugador> jugadores = db.getTodosLosJugadores();
+
+                    // for (Jugador jugador : jugadores) {
+                    //    String log = "ID: "+jugador.getId()+" ,NICK: " + jugador.getNick() + " ,PUNTUACION: " + jugador.getPuntuacion();
+                    //    Log.d("JUGADOR: ", log);
+                   // }
                 } catch (Exception e)
                 {
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
