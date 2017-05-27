@@ -1,11 +1,15 @@
 package nougat.team.team_nougat_app;
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,7 +85,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         else //Si no hay banderas, es que llegaste al final del juego sin morir
         {
             Toast.makeText(this,"GANASTE,SOS LOCO!",Toast.LENGTH_SHORT).show();
-            this.finish();
+            solicitar();
         }
     }
 
@@ -114,7 +118,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 {
                     // Cuando llega a 0 el numero de vidas, se termina el juego
                     Toast.makeText(this,"Perdiste!!! Suerte la próxima!!!",Toast.LENGTH_SHORT).show();
-                    this.finish();
+                    solicitar();
                 }
                 else if (vidas == 3)
                 {
@@ -159,5 +163,32 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         if (sonido_fondo != null){
             sonido_fondo.start();
         }
+    }
+
+    //Metodo experimental para solicitar el puntaje
+    public void solicitar()
+    {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.puntaje_alto, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptView);
+        alertDialogBuilder.setTitle("Felicidades!!!");
+        final EditText game_targ = (EditText)promptView.findViewById(R.id.txtNick);
+        // setup a dialog window
+        alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                try
+                {
+                    //Accion
+                    // Despues de hacer la consulta a la BD, implementar this.finish();
+                } catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        });// create an alert dialog
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 }
