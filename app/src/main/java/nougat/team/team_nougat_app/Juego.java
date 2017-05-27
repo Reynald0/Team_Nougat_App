@@ -186,13 +186,14 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                     db.addJugador(new Jugador(nick.getText().toString(), puntaje));
                     Log.d("Insert: ", "JUGADOR INSERTADO ..");
 
-                    // Log.d("Leyendo: ", "LEYENDO TODOS LOS JUGADORES ..");
-                    // List<Jugador> jugadores = db.getTodosLosJugadores();
+                    Log.d("Leyendo: ", "LEYENDO TODOS LOS JUGADORES ..");
+                    List<Jugador> jugadores = db.getTodosLosJugadores();
 
-                    // for (Jugador jugador : jugadores) {
-                    //    String log = "ID: "+jugador.getId()+" ,NICK: " + jugador.getNick() + " ,PUNTUACION: " + jugador.getPuntuacion();
-                    //    Log.d("JUGADOR: ", log);
-                   // }
+                    for (Jugador jugador : jugadores)
+                    {
+                        String log = "ID: "+jugador.getId()+" ,NICK: " + jugador.getNick() + " ,PUNTUACION: " + jugador.getPuntuacion();
+                        Log.d("JUGADOR: ", log);
+                    }
                 } catch (Exception e)
                 {
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
