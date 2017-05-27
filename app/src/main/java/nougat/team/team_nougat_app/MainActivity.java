@@ -15,12 +15,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
         sonido_fondo.start();
-
     }
 
     public void reproducirSonido(int sonido)
@@ -77,11 +75,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(sonido_fondo != null)
-        {
-            sonido_fondo.stop();
-            sonido_fondo.release();
-        }
     }
 
     @Override
