@@ -36,8 +36,8 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private ImageView vida3;
     private TextView tv_puntaje;
     private MediaPlayer sonido_fondo;
-    private MediaPlayer correcto;
-    private MediaPlayer incorrecto;
+    private MediaPlayer sonido_correcto;
+    private MediaPlayer sonido_incorrecto;
     private DatabaseHandler db;
 
     @Override
@@ -49,8 +49,8 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
         sonido_fondo.start();
-        incorrecto = MediaPlayer.create(this, R.raw.buttondiez);
-        correcto = MediaPlayer.create(this, R.raw.correcto);
+        sonido_incorrecto = MediaPlayer.create(this, R.raw.opcion_incorrecta);
+        sonido_correcto = MediaPlayer.create(this, R.raw.opcion_correcta);
         opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
         opcion_1.setOnClickListener(this);
         opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
@@ -103,7 +103,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             {
                 puntaje = puntaje + 10;//Aumenta el puntaje en 10 si aciertas
                 tv_puntaje.setText("Puntaje: "+ puntaje);
-                correcto.start();
+                sonido_correcto.start();
                 crearNuevaRonda();
             }
             //Si no si es la opcion incorrecta
@@ -114,7 +114,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
 
                 tv_puntaje.startAnimation(AnimationUtils.loadAnimation(this,android.R.anim.fade_in));
                 tv_puntaje.setText("Puntaje: "+ puntaje);
-                incorrecto.start();
+                sonido_incorrecto.start();
 
                 // Empieza el control de las vidas, un corazon gris por cada vida perdida
                 if(vidas == 0)
