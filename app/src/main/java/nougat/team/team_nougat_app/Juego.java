@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -147,26 +146,6 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (sonido_fondo != null){
-            sonido_fondo.pause();
-            if (isFinishing()){
-                sonido_fondo.stop();
-                sonido_fondo.release();
-            }
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (sonido_fondo != null){
-            sonido_fondo.start();
-        }
-    }
-
     //Metodo experimental para solicitar el puntaje
     public void solicitarNick()
     {
@@ -193,5 +172,25 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         });// create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (sonido_fondo != null){
+            sonido_fondo.pause();
+            if (isFinishing()){
+                sonido_fondo.stop();
+                sonido_fondo.release();
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sonido_fondo != null){
+            sonido_fondo.start();
+        }
     }
 }
