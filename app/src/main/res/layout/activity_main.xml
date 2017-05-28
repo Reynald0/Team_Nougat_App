@@ -62,14 +62,13 @@
             android:onClick="play"
             app:srcCompat="@drawable/btn_iniciar" />
 
-        <Button
+        <ImageView
             android:id="@+id/bPuntajes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bJugar"
-            android:layout_centerHorizontal="true"
-            android:onClick="verPuntajesAltos"
-            android:text="Top Puntaje" />
+            android:layout_height="50dp"
+            android:longClickable="false"
+            android:onClick="play"
+            app:srcCompat="@drawable/btn_top_puntaje" />
 
         <Button
             android:id="@+id/bConfig"
