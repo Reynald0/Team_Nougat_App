@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:longClickable="false"
-            android:onClick="play"
+            android:onClick="verPuntajesAltos"
             app:srcCompat="@drawable/btn_top_puntaje" />
 
         <Button
