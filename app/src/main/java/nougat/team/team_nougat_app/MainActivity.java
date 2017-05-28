@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
         }
         Intent i = new Intent(this, Juego.class);
         startActivity(i);
-        reproducirSonido(R.raw.buttoncerodos);
+        reproducirSonido(R.raw.boton);
     }
 
     public void verPuntajesAltos(View view)
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity
         }
         Intent i = new Intent(this, Puntajes_Altos.class);
         startActivity(i);
-        reproducirSonido(R.raw.buttoncerodos);
+        reproducirSonido(R.raw.boton);
     }
 
     public void ver_informacion(View view)
     {
         Intent i = new Intent(this, Informacion.class);
         startActivity(i);
-        reproducirSonido(R.raw.buttoncerodos);
+        reproducirSonido(R.raw.boton);
     }
 
     public void salir(View v)

@@ -37,6 +37,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private MediaPlayer sonido_fondo;
     private MediaPlayer sonido_correcto;
     private MediaPlayer sonido_incorrecto;
+    private MediaPlayer sonido_perder;
     private DatabaseHandler db;
 
     @Override
@@ -50,6 +51,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
         sonido_fondo.start();
         sonido_incorrecto = MediaPlayer.create(this, R.raw.opcion_incorrecta);
         sonido_correcto = MediaPlayer.create(this, R.raw.opcion_correcta);
+        sonido_perder = MediaPlayer.create(this, R.raw.perder);
         opcion_1 = (Button) findViewById(R.id.btn_opcion_1);
         opcion_1.setOnClickListener(this);
         opcion_2 = (Button) findViewById(R.id.btn_opcion_2);
@@ -119,6 +121,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
                 if(vidas == 0)
                 {
                     // Cuando llega a 0 el numero de vidas, se termina el juego
+                    sonido_fondo.stop();
                     solicitarNick();
                 }
                 else if (vidas == 3)
@@ -149,6 +152,7 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     //Metodo experimental para solicitar el puntaje
     public void solicitarNick()
     {
+        sonido_perder.start();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View promptView = layoutInflater.inflate(R.layout.puntaje_alto, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -177,9 +181,11 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onPause() {
         super.onPause();
-        if (sonido_fondo != null){
+        if (sonido_fondo != null)
+        {
             sonido_fondo.pause();
-            if (isFinishing()){
+            if (isFinishing())
+            {
                 sonido_fondo.stop();
                 sonido_fondo.release();
             }
@@ -189,7 +195,8 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onResume() {
         super.onResume();
-        if (sonido_fondo != null){
+        if (sonido_fondo != null)
+        {
             sonido_fondo.start();
         }
     }
