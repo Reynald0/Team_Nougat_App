@@ -3,6 +3,7 @@ package nougat.team.team_nougat_app;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -12,6 +13,16 @@ import android.widget.LinearLayout;
 
 public class SplashScreen extends Activity
 {
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splashscreen);
+        StartAnimations();
+        MediaPlayer sonido_fondo = MediaPlayer.create(this, R.raw.sonido_splash);
+        sonido_fondo.start();
+    }
+
     public void onAttachedToWindow()
     {
         super.onAttachedToWindow();
@@ -20,13 +31,9 @@ public class SplashScreen extends Activity
     }
     /** Called when the activity is first created. */
     Thread splashTread;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splashscreen);
-        StartAnimations();
-    }
-    private void StartAnimations() {
+
+    private void StartAnimations()
+    {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
         anim.reset();
         LinearLayout l=(LinearLayout) findViewById(R.id.lin_lay);
@@ -39,7 +46,8 @@ public class SplashScreen extends Activity
         iv.clearAnimation();
         iv.startAnimation(anim);
 
-        splashTread = new Thread() {
+        splashTread = new Thread()
+        {
             @Override
             public void run() {
                 try {
@@ -63,7 +71,5 @@ public class SplashScreen extends Activity
             }
         };
         splashTread.start();
-
     }
-
 }

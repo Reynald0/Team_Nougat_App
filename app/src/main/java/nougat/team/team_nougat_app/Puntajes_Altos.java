@@ -1,5 +1,6 @@
 package nougat.team.team_nougat_app;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,13 +12,21 @@ import java.util.List;
 
 public class Puntajes_Altos extends AppCompatActivity
 {
-    TableLayout tabla_jugadores;
+    private TableLayout tabla_jugadores;
     private final int CANTIDAD_TOP_JUGADORES = 10;
+    private MediaPlayer sonido_fondo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puntajes__altos);
+
+        sonido_fondo = MediaPlayer.create(this,R.raw.invisible);
+        sonido_fondo.setLooping(true);
+        sonido_fondo.setVolume(100,100);
+        sonido_fondo.start();
+
         tabla_jugadores = (TableLayout)findViewById(R.id.tl_tabla_jugadores);
 
         DatabaseHandler db = new DatabaseHandler(this);
@@ -38,6 +47,26 @@ public class Puntajes_Altos extends AppCompatActivity
             tv_puntaje.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
             tr.addView(tv_puntaje);
             tabla_jugadores.addView(tr);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (sonido_fondo != null){
+            sonido_fondo.pause();
+            if (isFinishing()){
+                sonido_fondo.stop();
+                sonido_fondo.release();
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sonido_fondo != null){
+            sonido_fondo.start();
         }
     }
 }
