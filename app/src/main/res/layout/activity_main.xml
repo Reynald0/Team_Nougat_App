@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/fondo_juego"
+    android:background="@drawable/fondo_principal"
     tools:context="nougat.team.team_nougat_app.MainActivity">
 
     <ImageView
@@ -45,37 +45,42 @@
         app:srcCompat="@drawable/btn_info" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_above="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="57dp"
+        android:layout_height="230dp"
+        android:layout_marginBottom="14dp"
         android:orientation="vertical"
         android:weightSum="1"
-        android:id="@+id/linearLayout3">
+        android:layout_above="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
-            android:id="@+id/btn_iniciar"
+            android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:longClickable="false"
             android:onClick="play"
             app:srcCompat="@drawable/btn_iniciar" />
 
-        <Button
-            android:id="@+id/bPuntajes"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bJugar"
-            android:layout_centerHorizontal="true"
+            android:layout_height="77dp"
+            android:longClickable="false"
             android:onClick="verPuntajesAltos"
-            android:text="Top Puntaje" />
+            app:srcCompat="@drawable/btn_puntaje" />
 
-        <Button
-            android:id="@+id/bConfig"
+        <ImageView
+            android:id="@+id/btn_iniciar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Configuracion" />
+            android:layout_height="80dp"
+            android:layout_alignBottom="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="105dp"
+            android:longClickable="false"
+            app:srcCompat="@drawable/btn_config" />
 
     </LinearLayout>
 
