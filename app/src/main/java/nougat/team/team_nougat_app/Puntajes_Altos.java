@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -59,6 +60,21 @@ public class Puntajes_Altos extends AppCompatActivity
                 sonido_fondo.stop();
                 sonido_fondo.release();
             }
+        }
+    }
+    public void detener(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo.stop();
+
+        }
+    }
+    public void iniciar(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo = MediaPlayer.create(this,R.raw.invisible);
+            sonido_fondo.setLooping(true);
+            sonido_fondo.setVolume(100,100);
+            sonido_fondo.start();
+
         }
     }
 

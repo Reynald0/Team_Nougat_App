@@ -191,13 +191,28 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
+    public void detener(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo.stop();
 
+        }
+    }
+    public void iniciar(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo = MediaPlayer.create(this,R.raw.midnightidea);
+            sonido_fondo.setLooping(true);
+            sonido_fondo.setVolume(100,100);
+            sonido_fondo.start();
+        }
+    }
     @Override
     protected void onResume() {
         super.onResume();
         if (sonido_fondo != null)
         {
             sonido_fondo.start();
+            sonido_correcto.stop();
+            sonido_incorrecto.stop();
         }
     }
 }

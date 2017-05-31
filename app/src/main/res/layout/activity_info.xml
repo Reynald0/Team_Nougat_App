@@ -4,7 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_info"
-    tools:context="nougat.team.team_nougat_app.Informacion">
+    android:background="@drawable/fondon"
+    tools:context="nougat.team.team_nougat_app.Instrucciones">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="5. Cuando tu respuesta sea incorrecta perderas un corazon"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="431dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="4. Si obtienes una buena puntuaciòn, Felicidades!!...Eres un buenaso...!!"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="380dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="3. Cada vez que empiezes a jugar, la puntuacion que obtengas se reflejara en el apartado puntaje alto "
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="2. Cada bandera tiene un valor de 10 puntos."
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="1. Selecciona la bandera que consideres correcta."
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="222dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="El juego consiste en poner todo tu conocimiento sobre las banderas del mundo en practica."
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColorLink="@android:color/holo_red_light"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="307dp"
+        android:layout_height="64dp"
+        android:fontFamily="casual"
+        android:text="Bienvenido al juego que  te pondrà a pensar!!!"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="57dp" />
 
 </android.support.constraint.ConstraintLayout>
