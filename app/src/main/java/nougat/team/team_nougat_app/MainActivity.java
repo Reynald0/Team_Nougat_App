@@ -1,20 +1,27 @@
 package nougat.team.team_nougat_app;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.media.MediaPlayer;
 import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
 {
     private MediaPlayer sonido_fondo;
+    private ImageView sonido;
+    int pos=0;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sonido=(ImageView)findViewById(R.id.iv_sonido);
+        sonido.setImageResource(R.drawable.sonidoon);
         sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
@@ -56,20 +63,26 @@ public class MainActivity extends AppCompatActivity
         startActivity(i);
         reproducirSonido(R.raw.boton);
     }
-    public void detener(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo.stop();
+
+    public void sonido(View V)
+    {
+
+        if (sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidooff);
+            sonido_fondo.pause();
+            pos=sonido_fondo.getCurrentPosition();
+
 
         }
-    }
-    public void iniciar(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
-            sonido_fondo.setLooping(true);
-            sonido_fondo.setVolume(100,100);
+        else if (!sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidoon);
+            sonido_fondo.seekTo(pos);
             sonido_fondo.start();
 
         }
+
     }
     public void ver_informacion(View view)
     {

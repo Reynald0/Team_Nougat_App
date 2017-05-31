@@ -18,10 +18,9 @@
         android:id="@+id/imgv_principal"
         android:layout_height="200dp"
         android:contentDescription="@string/app_name"
-        android:layout_above="@+id/linearLayout3"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="35dp" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -50,10 +49,10 @@
         android:layout_height="220dp"
         android:orientation="vertical"
         android:weightSum="1"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/imgv_principal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp">
 
         <ImageView
             android:id="@+id/btn_iniciar"
@@ -75,28 +74,37 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="53dp"
-        android:layout_height="47dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="190dp"
-        android:onClick="iniciar"
-        app:srcCompat="@drawable/sonidoon" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
+    <ImageView
+        android:id="@+id/iv_sonido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/imageView2"
-        android:layout_alignTop="@+id/imageButton"
-        android:onClick="detener"
-        app:srcCompat="@drawable/sonidooff" />
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:onClick="sonido"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+    <!--LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            android:onClick="detener"
+            app:srcCompat="@drawable/sonidooff" />
+
+        <ImageView
+            android:id="@+id/imageButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            android:onClick="iniciar"
+            app:srcCompat="@drawable/sonidoon" />
+    </LinearLayout!-->
 
 </RelativeLayout>

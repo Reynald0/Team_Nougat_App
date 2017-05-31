@@ -1,10 +1,12 @@
 package nougat.team.team_nougat_app;
 
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,13 +18,16 @@ public class Puntajes_Altos extends AppCompatActivity
     private TableLayout tabla_jugadores;
     private final int CANTIDAD_TOP_JUGADORES = 10;
     private MediaPlayer sonido_fondo;
+    private ImageView sonido;
+    int pos=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puntajes__altos);
-
+        sonido=(ImageView)findViewById(R.id.iv_sonido_puntaje);
+        sonido.setImageResource(R.drawable.sonidoon);
         sonido_fondo = MediaPlayer.create(this,R.raw.invisible);
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
@@ -52,7 +57,8 @@ public class Puntajes_Altos extends AppCompatActivity
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
         if (sonido_fondo != null){
             sonido_fondo.pause();
@@ -62,20 +68,22 @@ public class Puntajes_Altos extends AppCompatActivity
             }
         }
     }
-    public void detener(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo.stop();
+    public void sonido(View V)
+    {
+        if (sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidooff);
+            sonido_fondo.pause();
+            pos=sonido_fondo.getCurrentPosition();
 
         }
-    }
-    public void iniciar(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo = MediaPlayer.create(this,R.raw.invisible);
-            sonido_fondo.setLooping(true);
-            sonido_fondo.setVolume(100,100);
+        else if (!sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidoon);
+            sonido_fondo.seekTo(pos);
             sonido_fondo.start();
-
         }
+
     }
 
     @Override

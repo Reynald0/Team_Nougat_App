@@ -18,12 +18,11 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal">
 
-            <ImageButton
-                android:id="@+id/imageButton12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="iniciar"
+            <ImageView
+                android:id="@+id/iv_sonido_puntaje"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:onClick="sonido"
                 app:srcCompat="@drawable/sonidoon" />
 
             <TextView
@@ -32,14 +31,6 @@
                 android:layout_height="wrap_content"
                 android:text="      TOP PUNTAJES      "
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
-
-            <ImageButton
-                android:id="@+id/imageButton13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="detener"
-                app:srcCompat="@drawable/sonidooff" />
 
         </TableRow>
 
@@ -64,6 +55,10 @@
                 android:layout_height="wrap_content"
                 android:text="                 Puntaje"
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </TableRow>
 

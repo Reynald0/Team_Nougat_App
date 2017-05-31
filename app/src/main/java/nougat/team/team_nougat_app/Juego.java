@@ -1,6 +1,7 @@
 package nougat.team.team_nougat_app;
 
 import android.content.DialogInterface;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -33,18 +34,22 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
     private ImageView vida1;
     private ImageView vida2;
     private ImageView vida3;
+    private ImageView sonido;
     private TextView tv_puntaje;
     private MediaPlayer sonido_fondo;
     private MediaPlayer sonido_correcto;
     private MediaPlayer sonido_incorrecto;
     private MediaPlayer sonido_perder;
     private DatabaseHandler db;
+    private int pos=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
+        sonido=(ImageView)findViewById(R.id.iv_sonido_juego);
+        sonido.setImageResource(R.drawable.sonidoon);
         sonido_fondo = MediaPlayer.create(this,R.raw.midnightidea);
         sonido_fondo.setLooping(true);
         sonido_fondo.setVolume(100,100);
@@ -191,20 +196,31 @@ public class Juego extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
-    public void detener(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo.stop();
+
+
+
+
+
+    public void sonido(View V)
+    {
+        if (sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidooff);
+            sonido_fondo.pause();
+            pos=sonido_fondo.getCurrentPosition();
 
         }
-    }
-    public void iniciar(View v) {
-        if (sonido_fondo != null) {
-            sonido_fondo = MediaPlayer.create(this,R.raw.midnightidea);
-            sonido_fondo.setLooping(true);
-            sonido_fondo.setVolume(100,100);
+        else if (!sonido_fondo.isPlaying())
+        {
+            sonido.setImageResource(R.drawable.sonidoon);
+            sonido_fondo.seekTo(pos);
             sonido_fondo.start();
         }
+
     }
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
