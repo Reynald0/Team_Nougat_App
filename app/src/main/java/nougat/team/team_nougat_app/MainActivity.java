@@ -56,10 +56,24 @@ public class MainActivity extends AppCompatActivity
         startActivity(i);
         reproducirSonido(R.raw.boton);
     }
+    public void detener(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo.stop();
 
+        }
+    }
+    public void iniciar(View v) {
+        if (sonido_fondo != null) {
+            sonido_fondo = MediaPlayer.create(this,R.raw.fondo);
+            sonido_fondo.setLooping(true);
+            sonido_fondo.setVolume(100,100);
+            sonido_fondo.start();
+
+        }
+    }
     public void ver_informacion(View view)
     {
-        Intent i = new Intent(this, Informacion.class);
+        Intent i = new Intent(this, Instrucciones.class);
         startActivity(i);
         reproducirSonido(R.raw.boton);
     }

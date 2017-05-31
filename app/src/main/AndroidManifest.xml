@@ -29,7 +29,7 @@
         <activity
             android:name=".Juego"
             android:screenOrientation="portrait" />
-        <activity android:name=".Informacion"
+        <activity android:name=".Instrucciones"
             android:screenOrientation="portrait" />
         <activity android:name=".Puntajes_Altos"
             android:screenOrientation="portrait" />

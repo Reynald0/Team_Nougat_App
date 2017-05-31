@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_top_puntaje"
+    android:background="@drawable/fondon"
     tools:context="nougat.team.team_nougat_app.Puntajes_Altos">
 
     <TableLayout
@@ -18,34 +18,55 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal">
 
+            <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="iniciar"
+                app:srcCompat="@drawable/sonidoon" />
+
             <TextView
                 android:id="@+id/tv_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TOP PUNTAJES"
+                android:text="      TOP PUNTAJES      "
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+
+            <ImageButton
+                android:id="@+id/imageButton13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="detener"
+                app:srcCompat="@drawable/sonidooff" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:baselineAligned="false"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/activity_horizontal_margin">
 
             <TextView
                 android:id="@+id/tv_jugador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jugador"
+                android:text="              Jugador"
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
             <TextView
                 android:id="@+id/tv_puntaje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Puntaje"
+                android:text="                 Puntaje"
                 android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+
         </TableRow>
 
     </TableLayout>
+
 </LinearLayout>
